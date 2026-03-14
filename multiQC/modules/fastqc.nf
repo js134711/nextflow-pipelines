@@ -14,6 +14,7 @@ process fastqc {
     path "*fastqc.*"
 
     script:
+    fastq_files = (fastq_files instanceof Collection ? fastq_files : [fastq_files])
     """
     fastqc ${fastq_files.join(' ')} -o \$PWD
     """
